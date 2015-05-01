@@ -7,17 +7,20 @@ import fantasyFootball.MainApp;
 public class DraftClass {
 
 	private MainApp mainApp;
-	private Team[] TeamList = new Team[mainApp.getLeagueManager().getTeams().size()];
-	private Team[] DraftOrder = new Team[mainApp.getLeagueManager().getTeams().size()];
+	private Team[] TeamList;
+	private Team[] DraftOrder;
 	
-	public DraftClass() {
+	public DraftClass(MainApp mainapp) {
 		// TODO Auto-generated constructor stub
+		this.mainApp = mainapp;
+		TeamList = new Team[mainApp.getLeagueManager().getTeams().size()];
+		DraftOrder = new Team[mainApp.getLeagueManager().getTeams().size()];
 	}
 
 	private void DraftOrder(int runTimes){
 		
 		int start = 1;
-		int end = 12;
+		int end = DraftOrder.length;
 		
 		for(int j = 0; j < runTimes; j++){
 			for(int i = 1; i <= TeamList.length; i++){
@@ -80,6 +83,9 @@ public class DraftClass {
 			}
 		}
 		
-	}	
+	}
+	public Team[] getDraftOrder(){
+		return DraftOrder;
+	}
 	
 }

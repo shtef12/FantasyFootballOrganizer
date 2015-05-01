@@ -6,18 +6,26 @@ import fantasyFootball.MainApp;
 import fantasyFootball.model.LeagueManager;
 import fantasyFootball.model.TablePlayer;
 import fantasyFootball.model.Team;
+import fantasyFootball.model.DraftClass;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.StringConverter;
 
 public class GUIController {
 	
 	private MainApp mainApp;
+	private LeagueManager leagueManager;
+	private DraftClass draftClass;
 	
 	//======================//
 	//Keeper table variables//
@@ -69,6 +77,41 @@ public class GUIController {
 	@FXML
 	private TextField numBENCHField;
 	
+	//============================//
+	//Draft settings variables//
+	//============================//
+	@FXML
+	private ComboBox<Team> teamCombo1;
+	@FXML
+	private ComboBox<Team> teamCombo2;
+	@FXML
+	private ComboBox<Team> teamCombo3;
+	@FXML
+	private ComboBox<Team> teamCombo4;
+	@FXML
+	private ComboBox<Team> teamCombo5;
+	@FXML
+	private ComboBox<Team> teamCombo6;
+	@FXML
+	private ComboBox<Team> teamCombo7;
+	@FXML
+	private ComboBox<Team> teamCombo8;
+	@FXML
+	private ComboBox<Team> teamCombo9;
+	@FXML
+	private ComboBox<Team> teamCombo10;
+	@FXML
+	private ComboBox<Team> teamCombo11;
+	@FXML
+	private ComboBox<Team> teamCombo12;
+	@FXML
+	private ComboBox<Team> teamCombo13;
+	@FXML
+	private ComboBox<Team> teamCombo14;
+	@FXML
+	private ComboBox<Team> teamCombo15;
+	@FXML
+	private ComboBox<Team> teamCombo16;
 	
 	public GUIController() {
 		// TODO Auto-generated constructor stub
@@ -89,10 +132,15 @@ public class GUIController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<Team, String>("name"));
 		ownerCol.setCellValueFactory(new PropertyValueFactory<Team, String>("owner"));
 		
+		//initializeComboboxes();
+		
 	}
 	
 	public void setMainApp(MainApp main){
 		mainApp = main;
+		leagueManager = main.getLeagueManager();
+		draftClass = new DraftClass(main);
+		
 		keepersTable.setItems(mainApp.getKeeperObservableList());
 		teamTable.setItems(mainApp.getTeamObservableList());
 		
@@ -105,6 +153,8 @@ public class GUIController {
 		numDEFField.setText(Integer.toString(mainApp.getLeagueManager().getSettingsManager().getNumDEF()));
 		numFLEXField.setText(Integer.toString(mainApp.getLeagueManager().getSettingsManager().getNumFlex()));
 		numBENCHField.setText(Integer.toString(mainApp.getLeagueManager().getSettingsManager().getNumBench()));
+		
+		initializeComboboxes();
 	}
 
 	//==============================//
@@ -231,7 +281,135 @@ public class GUIController {
 		numBENCHField.setText(Integer.toString(mainApp.getLeagueManager().getSettingsManager().getNumBench()));
 	}
 	
+	private void initializeComboboxes(){
+		ComboBox[] comboBoxArray = {teamCombo1,teamCombo2,teamCombo3,teamCombo4,teamCombo5,teamCombo6,teamCombo7,teamCombo8,teamCombo9,
+				teamCombo10,teamCombo11,teamCombo12,teamCombo13,teamCombo14,teamCombo15,teamCombo16};
+		ObservableList<Team> teamData = mainApp.getTeamObservableList();
+		
+		//sets the team names into the options for the combobox
+		for(int i = 0; i < teamData.size(); i++){
+			for(int j = 0; j < teamData.size(); j++){
+				comboBoxArray[i].getItems().add(teamData.get(j));
+				//comboBoxArray[i].setItems(teamData);
+			}
+		}
+		
+		//set action events on the comboboxes
+		setComboBoxEvents();
+		
+		//show team name in the list of the combobox
+		//code.makery Marko Jakob
+		for(int i = 0; i < comboBoxArray.length; i++){
+			comboBoxArray[i].setCellFactory((comboBox)->{
+				return new ListCell<Team>(){
+					@Override
+					protected void updateItem(Team item, boolean empty){
+						super.updateItem(item,empty);
+						if(item == null || empty){
+							setText(null);
+						}else{
+							setText(item.getName());
+						}
+					}
+				};
+			});
+		}
+		
+		//show team name when an item is selected in combobox
+		//code.makery Marko Jakob
+		for(int i = 0; i < comboBoxArray.length; i++){
+			comboBoxArray[i].setConverter(new StringConverter<Team>(){
+				@Override
+				public String toString(Team team){
+					if(team == null){
+						return null;
+					}else{
+						return team.getName();
+					}
+				}
+				@Override
+				public Team fromString(String teamString){
+					return null;
+				}
+			});
+		}
+	}
+	
+	/**
+	 * adds on action events to the comboboxes
+	 * the events adds the teams to the draft order array in the draft class
+	 */
+	private void setComboBoxEvents(){
+		Team[] order = draftClass.getDraftOrder();
+		
+		teamCombo1.setOnAction((event)->{
+			Team selectedTeam = teamCombo1.getSelectionModel().getSelectedItem();
+			order[0] = selectedTeam;
+		});
+		teamCombo2.setOnAction((event)->{
+			Team selectedTeam = teamCombo2.getSelectionModel().getSelectedItem();
+			order[1] = selectedTeam;
+		});
+		teamCombo3.setOnAction((event)->{
+			Team selectedTeam = teamCombo3.getSelectionModel().getSelectedItem();
+			order[2] = selectedTeam;
+		});
+		teamCombo4.setOnAction((event)->{
+			Team selectedTeam = teamCombo4.getSelectionModel().getSelectedItem();
+			order[3] = selectedTeam;
+		});
+		teamCombo5.setOnAction((event)->{
+			Team selectedTeam = teamCombo5.getSelectionModel().getSelectedItem();
+			order[4] = selectedTeam;
+		});
+		teamCombo6.setOnAction((event)->{
+			Team selectedTeam = teamCombo6.getSelectionModel().getSelectedItem();
+			order[5] = selectedTeam;
+		});
+		teamCombo7.setOnAction((event)->{
+			Team selectedTeam = teamCombo7.getSelectionModel().getSelectedItem();
+			order[6] = selectedTeam;
+		});
+		teamCombo8.setOnAction((event)->{
+			Team selectedTeam = teamCombo8.getSelectionModel().getSelectedItem();
+			order[7] = selectedTeam;
+		});
+		teamCombo9.setOnAction((event)->{
+			Team selectedTeam = teamCombo9.getSelectionModel().getSelectedItem();
+			order[8] = selectedTeam;
+		});
+		teamCombo10.setOnAction((event)->{
+			Team selectedTeam = teamCombo10.getSelectionModel().getSelectedItem();
+			order[9] = selectedTeam;
+		});
+		teamCombo11.setOnAction((event)->{
+			Team selectedTeam = teamCombo11.getSelectionModel().getSelectedItem();
+			order[10] = selectedTeam;
+		});
+		teamCombo12.setOnAction((event)->{
+			Team selectedTeam = teamCombo12.getSelectionModel().getSelectedItem();
+			order[11] = selectedTeam;
+		});
+		teamCombo13.setOnAction((event)->{
+			Team selectedTeam = teamCombo13.getSelectionModel().getSelectedItem();
+			order[12] = selectedTeam;
+		});
+		teamCombo14.setOnAction((event)->{
+			Team selectedTeam = teamCombo14.getSelectionModel().getSelectedItem();
+			order[13] = selectedTeam;
+		});
+		teamCombo15.setOnAction((event)->{
+			Team selectedTeam = teamCombo15.getSelectionModel().getSelectedItem();
+			order[14] = selectedTeam;
+		});
+		teamCombo16.setOnAction((event)->{
+			Team selectedTeam = teamCombo16.getSelectionModel().getSelectedItem();
+			order[15] = selectedTeam;
+		});
+	}
 	public TableView<TablePlayer> getTable(){
 		return keepersTable;
 	}
 }
+
+

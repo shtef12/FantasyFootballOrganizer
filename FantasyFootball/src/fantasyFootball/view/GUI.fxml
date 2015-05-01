@@ -284,82 +284,82 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="1">
+                                          <ComboBox fx:id="teamCombo1" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="2">
+                                          <ComboBox fx:id="teamCombo2" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="3">
+                                          <ComboBox fx:id="teamCombo3" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="4">
+                                          <ComboBox fx:id="teamCombo4" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="5">
+                                          <ComboBox fx:id="teamCombo5" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="6">
+                                          <ComboBox fx:id="teamCombo6" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="7">
+                                          <ComboBox fx:id="teamCombo7" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="8">
+                                          <ComboBox fx:id="teamCombo8" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="9">
+                                          <ComboBox fx:id="teamCombo9" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="9">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="10">
+                                          <ComboBox fx:id="teamCombo10" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="10">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="11">
+                                          <ComboBox fx:id="teamCombo11" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="11">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="12">
+                                          <ComboBox fx:id="teamCombo12" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="13">
+                                          <ComboBox fx:id="teamCombo13" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="13">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="14">
+                                          <ComboBox fx:id="teamCombo14" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="14">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="15">
+                                          <ComboBox fx:id="teamCombo15" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="15">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </ComboBox>
-                                          <ComboBox prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="16">
+                                          <ComboBox fx:id="teamCombo16" prefHeight="25.0" prefWidth="234.0" GridPane.rowIndex="16">
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
