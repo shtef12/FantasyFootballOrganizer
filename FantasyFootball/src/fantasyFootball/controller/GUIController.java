@@ -1,5 +1,7 @@
 package fantasyFootball.controller;
 
+import java.util.ArrayList;
+
 import org.controlsfx.dialog.Dialogs;
 
 import fantasyFootball.MainApp;
@@ -112,6 +114,48 @@ public class GUIController {
 	private ComboBox<Team> teamCombo15;
 	@FXML
 	private ComboBox<Team> teamCombo16;
+	
+	//=================================
+	//Random draft button
+	//=================================
+	@FXML
+	private Button randomDraftButton;
+	
+	//================================
+	//Random draft text fields
+	//================================
+	@FXML
+	private TextField teamField1;
+	@FXML
+	private TextField teamField2;
+	@FXML
+	private TextField teamField3;
+	@FXML
+	private TextField teamField4;
+	@FXML
+	private TextField teamField5;
+	@FXML
+	private TextField teamField6;
+	@FXML
+	private TextField teamField7;
+	@FXML
+	private TextField teamField8;
+	@FXML
+	private TextField teamField9;
+	@FXML
+	private TextField teamField10;
+	@FXML
+	private TextField teamField11;
+	@FXML
+	private TextField teamField12;
+	@FXML
+	private TextField teamField13;
+	@FXML
+	private TextField teamField14;
+	@FXML
+	private TextField teamField15;
+	@FXML
+	private TextField teamField16;
 	
 	public GUIController() {
 		// TODO Auto-generated constructor stub
@@ -406,6 +450,33 @@ public class GUIController {
 			Team selectedTeam = teamCombo16.getSelectionModel().getSelectedItem();
 			order[15] = selectedTeam;
 		});
+	}
+	
+	@FXML
+	private void handleRandomDraft(){
+		draftClass.DraftOrder(1000);
+		ArrayList<Team> draftOrder = draftClass.getTeamList();
+		teamField1.setText(draftOrder.get(0).getOwner());
+		teamField2.setText(draftOrder.get(1).getOwner());
+		teamField3.setText(draftOrder.get(2).getOwner());
+		teamField4.setText(draftOrder.get(3).getOwner());
+		teamField5.setText(draftOrder.get(4).getOwner());
+		teamField6.setText(draftOrder.get(5).getOwner());
+		teamField7.setText(draftOrder.get(6).getOwner());
+		teamField8.setText(draftOrder.get(7).getOwner());
+		teamField9.setText(draftOrder.get(8).getOwner());
+		teamField10.setText(draftOrder.get(9).getOwner());
+		teamField11.setText(draftOrder.get(10).getOwner());
+		teamField12.setText(draftOrder.get(11).getOwner());
+		if(draftOrder.size() == 13 && draftOrder.get(12) != null)
+			teamField13.setText(draftOrder.get(12).getOwner());
+		if(draftOrder.size() == 14 && draftOrder.get(13) != null)
+			teamField14.setText(draftOrder.get(13).getOwner());
+		if(draftOrder.size() == 15 && draftOrder.get(14) != null)
+			teamField15.setText(draftOrder.get(14).getOwner());
+		if(draftOrder.size() == 16 && draftOrder.get(15) != null)
+			teamField16.setText(draftOrder.get(15).getOwner());
+		
 	}
 	public TableView<TablePlayer> getTable(){
 		return keepersTable;

@@ -1,5 +1,6 @@
 package fantasyFootball.model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import fantasyFootball.MainApp;
@@ -7,23 +8,23 @@ import fantasyFootball.MainApp;
 public class DraftClass {
 
 	private MainApp mainApp;
-	private Team[] TeamList;
+	private ArrayList<Team> TeamList;
 	private Team[] DraftOrder;
 	
 	public DraftClass(MainApp mainapp) {
 		// TODO Auto-generated constructor stub
 		this.mainApp = mainapp;
-		TeamList = new Team[mainApp.getLeagueManager().getTeams().size()];
+		TeamList = mainApp.getLeagueManager().getTeams();
 		DraftOrder = new Team[mainApp.getLeagueManager().getTeams().size()];
 	}
 
-	private void DraftOrder(int runTimes){
+	public void DraftOrder(int runTimes){
 		
 		int start = 1;
 		int end = DraftOrder.length;
 		
 		for(int j = 0; j < runTimes; j++){
-			for(int i = 1; i <= TeamList.length; i++){
+			for(int i = 1; i <= TeamList.size(); i++){
 				//System.out.println(TeamList.length);
 				CheckIfEmpty(start,end,i);
 			}
@@ -35,9 +36,10 @@ public class DraftClass {
 		
 		//prints out the contents of the teamlist array to show the draft order
 		System.out.println("Draft Order is:");
-		for(int i = 0; i < TeamList.length; i++){
-			System.out.println(TeamList[i].ToString() + " at index " + i);
+		for(int i = 0; i < TeamList.size(); i++){
+			System.out.println(TeamList.get(i).ToString() + " at index " + i);
 		}
+		
 		
 	}
 	
@@ -53,7 +55,7 @@ public class DraftClass {
 		//if index draftnum is null, add the team to that spot in the draft order arrayList
 		//else do the function again 
 		if(DraftOrder[draftNum] == null){
-			DraftOrder[draftNum] = TeamList[index - 1];
+			DraftOrder[draftNum] = TeamList.get(index - 1);
 			DraftOrder[draftNum].addToDraftOrder(draftNum);
 		}
 		else{
@@ -70,13 +72,13 @@ public class DraftClass {
 		
 		while(swapped){
 			swapped = false;
-			for(j = 0; j < TeamList.length - 1; j++){
+			for(j = 0; j < TeamList.size() - 1; j++){
 				
 				//if draft order is greater than draft order of next team, swap them
-				if(TeamList[j].getDraftOrder() > TeamList[j + 1].getDraftOrder()){
-					temp = TeamList[j];
-					TeamList[j] = TeamList[j+1];
-					TeamList[j+1] = temp;
+				if(TeamList.get(j).getDraftOrder() > TeamList.get(j + 1).getDraftOrder()){
+					temp = TeamList.get(j);
+					TeamList.set(j, TeamList.get(j+1));
+					TeamList.set(j+1,temp);
 					swapped = true;
 				}
 				
@@ -84,6 +86,14 @@ public class DraftClass {
 		}
 		
 	}
+	/**
+	 * Returns the team list
+	 * @return Team[] -> the team list
+	 */
+	public ArrayList<Team> getTeamList(){
+		return TeamList;
+	}
+	
 	public Team[] getDraftOrder(){
 		return DraftOrder;
 	}
