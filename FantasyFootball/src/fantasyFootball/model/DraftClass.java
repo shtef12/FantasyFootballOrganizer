@@ -35,10 +35,10 @@ public class DraftClass {
 		SortTeams();
 		
 		//prints out the contents of the teamlist array to show the draft order
-		System.out.println("Draft Order is:");
-		for(int i = 0; i < TeamList.size(); i++){
+		//System.out.println("Draft Order is:");
+		/*for(int i = 0; i < TeamList.size(); i++){
 			System.out.println(TeamList.get(i).ToString() + " at index " + i);
-		}
+		}*/
 		
 		
 	}
